@@ -12,7 +12,9 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.rx.RealmObservableFactory;
 import me.rzknairb.data.local.repositories.UserLocalRepository;
-import me.rzknairb.domain.repositories.UserDatabaseRepository;
+import me.rzknairb.data.remote.repositories.UserRemoteRepository;
+import me.rzknairb.domain.repositories.UserLocalRepositoryImp;
+import me.rzknairb.domain.repositories.UserRemoteRepositoryImp;
 
 @Module
 public class AppModule {
@@ -22,12 +24,18 @@ public class AppModule {
         return application;
     }
 
+    /*
     @Provides
     @Singleton
-    UserDatabaseRepository providesUserDatabaseRepository(UserLocalRepository loginLocalRepository) {
+    UserLocalRepositoryImp providesUserDatabaseRepository(UserLocalRepository loginLocalRepository) {
         return loginLocalRepository;
-    }
+    }*/
 
+    @Provides
+    @Singleton
+    UserRemoteRepositoryImp providesUserRemoteRepositor(UserRemoteRepository userRemoteRepository){
+        return userRemoteRepository;
+    }
 
     @Singleton
     @Provides

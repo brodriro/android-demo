@@ -8,14 +8,15 @@ import io.realm.RealmConfiguration;
 import me.rzknairb.data.Utils;
 import me.rzknairb.data.local.entities.UserDatabase;
 import me.rzknairb.domain.entities.User;
+import me.rzknairb.domain.repositories.UserLocalRepositoryImp;
 
 
-public class UserLocalRepositoryImp implements me.rzknairb.domain.repositories.UserLocalRepositoryImp {
+public class UserLocalRepository/* implements UserLocalRepositoryImp */{
 
-    private final RealmConfiguration realmConfiguration;
+ /*   private final RealmConfiguration realmConfiguration;
 
     @Inject
-    public UserLocalRepositoryImp(RealmConfiguration realmConfiguration) {
+    public UserLocalRepository(RealmConfiguration realmConfiguration) {
         this.realmConfiguration = realmConfiguration;
     }
 
@@ -65,5 +66,5 @@ public class UserLocalRepositoryImp implements me.rzknairb.domain.repositories.U
             realmInstance.executeTransaction(realm -> realm.delete(UserDatabase.class));
             return true;
         }
-    }
+    }*/
 }

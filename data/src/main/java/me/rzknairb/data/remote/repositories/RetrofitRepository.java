@@ -1,4 +1,4 @@
-package me.rzknairb.data.repositories;
+package me.rzknairb.data.remote.repositories;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;

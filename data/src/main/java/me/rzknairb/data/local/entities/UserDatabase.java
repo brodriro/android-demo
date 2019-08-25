@@ -25,25 +25,6 @@ public class UserDatabase extends RealmObject {
         this.password = password;
     }
 
-    public UserDatabase(User user) {
-        this.setId(user.getId());
-        this.setName(user.getName());
-        this.setPassword(user.getPassword());
-        this.setUsername(user.getUsername());
-        this.setLastname(user.getLastname());
-        this.setAge(user.getAge());
-    }
-
-    public User toUser() {
-        User user = new User();
-        user.setId(this.getId());
-        user.setName(this.getName());
-        user.setPassword(this.getPassword());
-        user.setUsername(this.getUsername());
-        user.setLastname(this.getLastname());
-        user.setAge(this.getAge());
-        return user;
-    }
 
     public void setLastname(String lastname) {
         this.lastname = lastname;

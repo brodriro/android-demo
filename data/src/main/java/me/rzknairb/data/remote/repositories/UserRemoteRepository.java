@@ -1,5 +1,6 @@
-package me.rzknairb.data.repositories;
+package me.rzknairb.data.remote.repositories;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Single;
@@ -12,11 +13,27 @@ public class UserRemoteRepository extends RetrofitRepository implements UserRemo
     public Single<User> getProfile() {
         API api = getRetrofit(API.BASE_URL).create(API.class);
 
-        return null;
+        return api.getProfile().map(userResponse -> {
+            User user = null;
+
+            if (userResponse != null) {
+                //TODO IMPLEMENT
+            }
+            return user;
+        });
     }
 
     @Override
     public Single<List<User>> getUsers() {
-        return null;
+        API api = getRetrofit(API.BASE_URL).create(API.class);
+
+        return api.getUsers().map(userResponses -> {
+            List<User> userList = new ArrayList<>();
+
+            if (userResponses != null){
+                //TODO IMPLEMENT
+            }
+            return userList;
+        });
     }
 }

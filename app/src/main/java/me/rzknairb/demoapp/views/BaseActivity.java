@@ -16,8 +16,8 @@ import io.reactivex.subjects.BehaviorSubject;
 Basado en https://github.com/uber/AutoDispose/tree/master/sample/src/main/java/com/uber/autodispose/recipes
 con soporte añadido para Dagger
  */
-@SuppressLint("Registered")
-public class BaseActivity extends DaggerAppCompatActivity implements LifecycleScopeProvider<BaseActivity.ActivityEvent> {
+
+public abstract class  BaseActivity extends DaggerAppCompatActivity implements LifecycleScopeProvider<BaseActivity.ActivityEvent> {
 
     public enum ActivityEvent {
         CREATE,
