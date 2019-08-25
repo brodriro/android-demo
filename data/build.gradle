@@ -1,16 +1,19 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'realm-android'
-
 android {
     compileSdkVersion 28
+
+
     defaultConfig {
-        applicationId "me.rzknairb.demoapp"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -21,29 +24,26 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
-    implementation 'com.jakewharton:butterknife:10.1.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-
-    implementation group: 'io.reactivex.rxjava2', name: 'rxandroid', version: '2.1.1'
     implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.8'
-    implementation 'com.uber.autodispose:autodispose-lifecycle:1.2.0'
+    implementation group: 'com.google.dagger', name: 'dagger', version: '2.22.1'
 
-    implementation group: 'com.google.dagger', name: 'dagger-android', version: '2.22.1'
-    implementation group: 'com.google.dagger', name: 'dagger-android-support', version: '2.22.1'
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.22.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
+
     annotationProcessor 'com.google.dagger:dagger-compiler:2.22.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation project(path: ':data')
     implementation project(path: ':domain')
 }
