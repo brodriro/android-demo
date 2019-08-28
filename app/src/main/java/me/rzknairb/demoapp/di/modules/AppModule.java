@@ -33,7 +33,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    UserRemoteRepositoryImp providesUserRemoteRepositor(UserRemoteRepository userRemoteRepository){
+    UserRemoteRepositoryImp providesUserRemoteRepository(UserRemoteRepository userRemoteRepository){
         return userRemoteRepository;
     }
 
