@@ -36,6 +36,7 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View,Bot
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         return false;
     }
 }

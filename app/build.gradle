@@ -32,6 +32,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0-alpha09'
 
     implementation 'com.jakewharton:butterknife:10.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
