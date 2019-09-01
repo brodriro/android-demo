@@ -13,8 +13,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseActivity;
+import me.rzknairb.demoapp.views.profile.ProfileFragment;
 
-public class HomeActivity extends BaseActivity implements HomePresenter.View,BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends BaseActivity implements HomePresenter.View, BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     HomePresenter homePresenter;
@@ -37,6 +38,13 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View,Bot
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+        switch (item.getItemId()) {
+            case R.id.action_profile:
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, new ProfileFragment())
+                        .commit();
+                break;
+        }
         return false;
     }
 }
