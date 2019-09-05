@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import javax.inject.Inject;
+
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseFragment;
 
@@ -21,7 +23,7 @@ import me.rzknairb.demoapp.views.BaseFragment;
  * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileFragment extends BaseFragment {
+public class ProfileFragment extends BaseFragment implements ProfilePresenter.View {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,6 +34,9 @@ public class ProfileFragment extends BaseFragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    @Inject ProfilePresenter profilePresenter;
+
 
     public ProfileFragment() {
         // Required empty public constructor

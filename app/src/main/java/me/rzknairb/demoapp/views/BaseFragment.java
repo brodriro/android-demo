@@ -1,10 +1,11 @@
 package me.rzknairb.demoapp.views;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.Lifecycle;
+import androidx.fragment.app.Fragment;
 
 import com.uber.autodispose.lifecycle.CorrespondingEventsFunction;
 import com.uber.autodispose.lifecycle.LifecycleEndedException;
@@ -16,32 +17,45 @@ import io.reactivex.subjects.BehaviorSubject;
 
 public abstract class BaseFragment extends DaggerFragment implements LifecycleScopeProvider<BaseFragment.FragmentEvent> {
     public enum FragmentEvent {
+        ATTACH,
         CREATE,
+        CREATE_VIEW,
         START,
         RESUME,
         PAUSE,
         STOP,
-        DESTROY
+        DESTROY_VIEW,
+        DESTROY,
+        DETACH
     }
 
-    private static final CorrespondingEventsFunction<BaseFragment.FragmentEvent> CORRESPONDING_EVENTS = fragmentEvent -> {
-        switch (fragmentEvent) {
-            case CREATE:
-                return BaseFragment.FragmentEvent.DESTROY;
-            case START:
-                return BaseFragment.FragmentEvent.STOP;
-            case RESUME:
-                return BaseFragment.FragmentEvent.PAUSE;
-            case PAUSE:
-                return BaseFragment.FragmentEvent.STOP;
-            case STOP:
-                return BaseFragment.FragmentEvent.DESTROY;
-            default:
-                throw new LifecycleEndedException("Cannot bind to Fragment lifecycle after destroy.");
-        }
-    };
+    private static final CorrespondingEventsFunction<FragmentEvent> CORRESPONDING_EVENTS =
+            event -> {
+                switch (event) {
+                    case ATTACH:
+                        return FragmentEvent.DETACH;
+                    case CREATE:
+                        return FragmentEvent.DESTROY;
+                    case CREATE_VIEW:
+                        return FragmentEvent.DESTROY_VIEW;
+                    case START:
+                        return FragmentEvent.STOP;
+                    case RESUME:
+                        return FragmentEvent.PAUSE;
+                    case PAUSE:
+                        return FragmentEvent.STOP;
+                    case STOP:
+                        return FragmentEvent.DESTROY_VIEW;
+                    case DESTROY_VIEW:
+                        return FragmentEvent.DESTROY;
+                    case DESTROY:
+                        return FragmentEvent.DETACH;
+                    default:
+                        throw new LifecycleEndedException("Cannot bind to Fragment lifecycle after detach.");
+                }
+            };
 
-    private final BehaviorSubject<BaseFragment.FragmentEvent> lifecycleEvents = BehaviorSubject.create();
+    private final BehaviorSubject<FragmentEvent> lifecycleEvents = BehaviorSubject.create();
 
     @Override
     public Observable<FragmentEvent> lifecycle() {
@@ -53,10 +67,28 @@ public abstract class BaseFragment extends DaggerFragment implements LifecycleSc
         return CORRESPONDING_EVENTS;
     }
 
+    @Nullable
+    @Override
+    public FragmentEvent peekLifecycle() {
+        return lifecycleEvents.getValue();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        lifecycleEvents.onNext(FragmentEvent.ATTACH);
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lifecycleEvents.onNext(FragmentEvent.CREATE);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        lifecycleEvents.onNext(FragmentEvent.CREATE_VIEW);
     }
 
     @Override
@@ -73,30 +105,31 @@ public abstract class BaseFragment extends DaggerFragment implements LifecycleSc
 
     @Override
     public void onPause() {
-        super.onPause();
         lifecycleEvents.onNext(FragmentEvent.PAUSE);
+        super.onPause();
     }
 
     @Override
     public void onStop() {
-        super.onStop();
         lifecycleEvents.onNext(FragmentEvent.STOP);
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        lifecycleEvents.onNext(FragmentEvent.DESTROY_VIEW);
+        super.onDestroyView();
     }
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         lifecycleEvents.onNext(FragmentEvent.DESTROY);
-    }
-
-    @NonNull
-    @Override
-    public Lifecycle getLifecycle() {
-        return super.getLifecycle();
+        super.onDestroy();
     }
 
     @Override
-    public FragmentEvent peekLifecycle() {
-        return lifecycleEvents.getValue();
+    public void onDetach() {
+        lifecycleEvents.onNext(FragmentEvent.DETACH);
+        super.onDetach();
     }
 }
