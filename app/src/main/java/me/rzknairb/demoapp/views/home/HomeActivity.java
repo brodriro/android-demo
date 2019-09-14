@@ -41,7 +41,7 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Bo
         switch (item.getItemId()) {
             case R.id.action_profile:
                 getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, new ProfileFragment())
+                        .replace(R.id.fragment_container, ProfileFragment.newInstance())
                         .commit();
                 break;
         }
