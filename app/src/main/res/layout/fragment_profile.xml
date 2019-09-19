@@ -99,112 +99,140 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_photo_container">
 
             <LinearLayout
+                android:id="@+id/container_social_metrics"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:layout_marginStart="@dimen/margin_profile_social_metrics"
-                    android:layout_marginEnd="@dimen/margin_profile_social_metrics">
+                    android:layout_marginEnd="@dimen/margin_profile_social_metrics"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/profile_social_text_size"
-                        android:text="@string/profile_social_likes" />
+                        android:text="@string/profile_social_likes"
+                        android:textSize="@dimen/profile_social_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/profile_social_text_size"
-                        android:text="@string/profile_social_metrics" />
+                        android:text="@string/profile_social_metrics"
+                        android:textSize="@dimen/profile_social_text_size" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="2dp"
                     android:layout_height="24dp"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@color/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:layout_marginStart="@dimen/margin_profile_social_metrics"
-                    android:layout_marginEnd="@dimen/margin_profile_social_metrics">
+                    android:layout_marginEnd="@dimen/margin_profile_social_metrics"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/profile_social_text_size"
-                        android:text="@string/profile_social_posts" />
+                        android:text="@string/profile_social_posts"
+                        android:textSize="@dimen/profile_social_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/profile_social_text_size"
-                        android:text="@string/profile_social_metrics" />
+                        android:text="@string/profile_social_metrics"
+                        android:textSize="@dimen/profile_social_text_size" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="2dp"
                     android:layout_height="24dp"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@color/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:layout_marginStart="@dimen/margin_profile_social_metrics"
-                    android:layout_marginEnd="@dimen/margin_profile_social_metrics">
+                    android:layout_marginEnd="@dimen/margin_profile_social_metrics"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/profile_social_text_size"
-                        android:text="@string/profile_social_shares" />
+                        android:text="@string/profile_social_shares"
+                        android:textSize="@dimen/profile_social_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/profile_social_text_size"
-                        android:text="@string/profile_social_metrics" />
+                        android:text="@string/profile_social_metrics"
+                        android:textSize="@dimen/profile_social_text_size" />
                 </LinearLayout>
 
                 <View
                     android:layout_width="2dp"
                     android:layout_height="24dp"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@color/colorPrimary" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
                     android:layout_marginStart="@dimen/margin_profile_social_metrics"
-                    android:layout_marginEnd="@dimen/margin_profile_social_metrics">
+                    android:layout_marginEnd="@dimen/margin_profile_social_metrics"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/profile_social_text_size"
-                        android:text="@string/profile_social_friends" />
+                        android:text="@string/profile_social_friends"
+                        android:textSize="@dimen/profile_social_text_size" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/profile_social_text_size"
-                        android:text="@string/profile_social_metrics" />
+                        android:text="@string/profile_social_metrics"
+                        android:textSize="@dimen/profile_social_text_size" />
                 </LinearLayout>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/container_social_metrics">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_person"
+                    android:tint="@color/colorPrimaryDark"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="20 years"
+                    />
+
+            </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
