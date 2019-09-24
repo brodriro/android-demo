@@ -10,10 +10,16 @@ public class User {
     private String age;
     private String email;
     private String location;
-
+    private Social social;
 
     public User() {
     }
 
 
+    class Social {
+        private String likes;
+        private String shares;
+        private String posts;
+        private String friends;
+    }
 }

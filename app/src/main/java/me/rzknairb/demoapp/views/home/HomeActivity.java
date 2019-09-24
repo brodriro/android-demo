@@ -33,6 +33,7 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Bo
 
     private void initViews() {
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setSelectedItemId(0);
     }
 
     @Override

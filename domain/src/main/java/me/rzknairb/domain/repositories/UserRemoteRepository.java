@@ -5,7 +5,7 @@ import java.util.List;
 import io.reactivex.Single;
 import me.rzknairb.domain.entities.User;
 
-public interface UserRemoteRepositoryImp {
+public interface UserRemoteRepository {
 
     Single<User> getProfile();
 

@@ -9,11 +9,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseFragment;
+import me.rzknairb.domain.entities.User;
 
 public class ProfileFragment extends BaseFragment implements ProfilePresenter.View {
 
@@ -35,6 +37,8 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        profilePresenter.start();
     }
 
     @Override
@@ -54,4 +58,13 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
         super.onDetach();
     }
 
+    @Override
+    public void onLoadProfile(User user) {
+        Toast.makeText(this.getContext(), "Implementar Perfil", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onErrorProfile() {
+        Toast.makeText(this.getContext(), "Error al cargar Perfil", Toast.LENGTH_SHORT).show();
+    }
 }

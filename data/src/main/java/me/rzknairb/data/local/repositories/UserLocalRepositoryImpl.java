@@ -1,22 +1,12 @@
 package me.rzknairb.data.local.repositories;
 
-import javax.inject.Inject;
 
-import io.reactivex.Single;
-import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import me.rzknairb.data.Utils;
-import me.rzknairb.data.local.entities.UserDatabase;
-import me.rzknairb.domain.entities.User;
-import me.rzknairb.domain.repositories.UserLocalRepositoryImp;
-
-
-public class UserLocalRepository/* implements UserLocalRepositoryImp */{
+public class UserLocalRepositoryImpl/* implements UserLocalRepository */{
 
  /*   private final RealmConfiguration realmConfiguration;
 
     @Inject
-    public UserLocalRepository(RealmConfiguration realmConfiguration) {
+    public UserLocalRepositoryImpl(RealmConfiguration realmConfiguration) {
         this.realmConfiguration = realmConfiguration;
     }
 

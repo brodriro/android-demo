@@ -4,4 +4,5 @@
     <dimen name="profile_title_size">18sp</dimen>
     <dimen name="margin_profile_social_metrics">12dp</dimen>
     <dimen name="profile_social_text_size">18sp</dimen>
+    <dimen name="profile_tags">18sp</dimen>
 </resources>

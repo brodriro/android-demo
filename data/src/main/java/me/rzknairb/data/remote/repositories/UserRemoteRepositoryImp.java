@@ -6,9 +6,9 @@ import java.util.List;
 import io.reactivex.Single;
 import me.rzknairb.data.remote.API;
 import me.rzknairb.domain.entities.User;
-import me.rzknairb.domain.repositories.UserRemoteRepositoryImp;
+import me.rzknairb.domain.repositories.UserRemoteRepository;
 
-public class UserRemoteRepository extends RetrofitRepository implements UserRemoteRepositoryImp {
+public class UserRemoteRepositoryImp extends RetrofitRepository implements UserRemoteRepository {
     @Override
     public Single<User> getProfile() {
         API api = getRetrofit(API.BASE_URL).create(API.class);
