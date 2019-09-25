@@ -15,13 +15,13 @@ import me.rzknairb.domain.usecases.ProfileUseCase;
 public class ProfilePresenter extends BasePresenter<ProfilePresenter.View> {
 
     @Inject
-    ProfileUseCase profileUseCase;
-
-
-    @Inject
     public ProfilePresenter(View view) {
         super(view);
     }
+
+    @Inject
+    ProfileUseCase profileUseCase;
+
 
     public void start() {
         profileUseCase.getProfile()

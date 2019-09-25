@@ -1,5 +1,7 @@
 package me.rzknairb.data.remote.entities;
 
+import me.rzknairb.domain.entities.User;
+
 public class UserResponse {
 
     private int id;
@@ -11,7 +13,47 @@ public class UserResponse {
     private String age;
     private String email;
     private String location;
-    private SocialResponse socialResponse;
+    private SocialResponse social;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public SocialResponse getSocial() {
+        return social;
+    }
 
     private class SocialResponse {
         private String posts;
@@ -24,6 +66,28 @@ public class UserResponse {
             this.likes = likes;
             this.shares = shares;
             this.friends = friends;
+        }
+
+        public String getPosts() {
+            return posts;
+        }
+
+        public String getLikes() {
+            return likes;
+        }
+
+        public String getShares() {
+            return shares;
+        }
+
+        public String getFriends() {
+            return friends;
+        }
+
+        public User.Social toSocial() {
+            return new User().new Social(
+                    getLikes(), getShares(), getPosts(), getFriends()
+            );
         }
     }
 
@@ -38,6 +102,21 @@ public class UserResponse {
         this.age = age;
         this.email = email;
         this.location = location;
-        this.socialResponse = socialResponse;
+        this.social = socialResponse;
+    }
+
+    public User toUser() {
+        return new User(
+            getId(),
+                getUsername(),
+                getName(),
+                getLastname(),
+                getImage(),
+                getOccupation(),
+                getAge(),
+                getEmail(),
+                getLocation(),
+                getSocial().toSocial()
+        );
     }
 }
