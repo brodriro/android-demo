@@ -5,4 +5,6 @@
     <dimen name="margin_profile_social_metrics">12dp</dimen>
     <dimen name="profile_social_text_size">18sp</dimen>
     <dimen name="profile_tags">18sp</dimen>
+    <dimen name="separator_height">32dp</dimen>
+    <dimen name="profile_margin_vertical">24dp</dimen>
 </resources>

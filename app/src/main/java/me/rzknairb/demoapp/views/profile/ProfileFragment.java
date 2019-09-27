@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseFragment;
 import me.rzknairb.domain.entities.User;
@@ -28,7 +30,30 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
 
     @BindView(R.id.profile_fullname)
     TextView tvFullname;
+    @BindView(R.id.profile_image)
+    CircleImageView imageView;
+    @BindView(R.id.profile_ibPhone)
+    ImageButton ivPhone;
+    @BindView(R.id.profile_ibEmail)
+    ImageButton ivEmail;
 
+    @BindView(R.id.profile_likes)
+    TextView likes;
+    @BindView(R.id.profile_posts)
+    TextView posts;
+    @BindView(R.id.profile_shares)
+    TextView shares;
+    @BindView(R.id.profile_friends)
+    TextView friends;
+
+    @BindView(R.id.profile_years)
+    TextView years;
+    @BindView(R.id.profile_email)
+    TextView email;
+    @BindView(R.id.profile_location)
+    TextView location;
+    @BindView(R.id.profile_occupation)
+    TextView occupation;
 
     public static ProfileFragment newInstance() {
         ProfileFragment fragment = new ProfileFragment();
@@ -41,6 +66,12 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         profilePresenter.start();
+        initViews();
+    }
+
+    private void initViews() {
+        ivEmail.setVisibility(View.GONE);
+        ivPhone.setVisibility(View.GONE);
     }
 
     @Override
@@ -48,7 +79,7 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        ButterKnife.bind(this,view);
+        ButterKnife.bind(this, view);
         return view;
     }
 
@@ -64,9 +95,15 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
 
     @Override
     public void onLoadProfile(User user) {
-        tvFullname.setText(user.getName() + " " + user.getLastname());
-        Log.e("ProfileFragment", user.getEmail());
-        Toast.makeText(this.getContext(), "Implementar Perfil", Toast.LENGTH_SHORT).show();
+        tvFullname.setText(String.format("%s %s", user.getName(), user.getLastname()));
+        email.setText(user.getEmail());
+        location.setText(user.getLocation());
+        occupation.setText(user.getOccupation());
+
+        likes.setText(user.getSocial().getLikes());
+        posts.setText(user.getSocial().getPosts());
+        friends.setText(user.getSocial().getFriends());
+        shares.setText(user.getSocial().getShares());
     }
 
     @Override
