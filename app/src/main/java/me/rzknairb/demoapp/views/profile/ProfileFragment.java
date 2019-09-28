@@ -101,6 +101,7 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
     @Override
     public void onLoadProfile(User user) {
         tvFullname.setText(String.format("%s %s", user.getName(), user.getLastname()));
+        years.setText(user.getAge());
         email.setText(user.getEmail());
         location.setText(user.getLocation());
         occupation.setText(user.getOccupation());

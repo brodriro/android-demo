@@ -14,6 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseActivity;
+import me.rzknairb.demoapp.views.feed.FeedFragment;
 import me.rzknairb.demoapp.views.profile.ProfileFragment;
 
 public class HomeActivity extends BaseActivity implements HomePresenter.View, BottomNavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +44,9 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Bo
         switch (item.getItemId()) {
             case R.id.action_profile:
                 startFragment(ProfileFragment.newInstance());
+                break;
+            case R.id.action_feed:
+                startFragment(FeedFragment.newInstance());
                 break;
         }
         return false;

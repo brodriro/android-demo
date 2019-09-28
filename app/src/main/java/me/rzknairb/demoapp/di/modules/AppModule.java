@@ -11,7 +11,9 @@ import dagger.Provides;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.rx.RealmObservableFactory;
+import me.rzknairb.data.remote.repositories.FeedRemoteRepositoryImp;
 import me.rzknairb.data.remote.repositories.UserRemoteRepositoryImp;
+import me.rzknairb.domain.repositories.FeedRemoteRepository;
 import me.rzknairb.domain.repositories.UserRemoteRepository;
 
 @Module
@@ -26,6 +28,12 @@ public class AppModule {
     @Singleton
     UserRemoteRepository providesUserRemoteRepository(UserRemoteRepositoryImp userRemoteRepositoryImp) {
         return userRemoteRepositoryImp;
+    }
+
+    @Provides
+    @Singleton
+    FeedRemoteRepository providesFeedRemoteRepository(FeedRemoteRepositoryImp feedRemoteRepositoryImp){
+        return feedRemoteRepositoryImp;
     }
 
     @Singleton

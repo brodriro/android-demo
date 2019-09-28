@@ -3,6 +3,7 @@ package me.rzknairb.data.remote;
 import java.util.List;
 
 import io.reactivex.Single;
+import me.rzknairb.data.remote.entities.FeedResponse;
 import me.rzknairb.data.remote.entities.UserResponse;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
@@ -19,5 +20,8 @@ public interface API {
     @GET("users")
     Single<List<UserResponse>> getUsers();
 
+    @Headers("Content-Type: application/json")
+    @GET("posts")
+    Single<List<FeedResponse>> getFeed();
 
 }

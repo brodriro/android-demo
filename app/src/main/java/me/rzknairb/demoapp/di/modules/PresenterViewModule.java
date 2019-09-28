@@ -3,6 +3,8 @@ package me.rzknairb.demoapp.di.modules;
 
 import dagger.Binds;
 import dagger.Module;
+import me.rzknairb.demoapp.views.feed.FeedFragment;
+import me.rzknairb.demoapp.views.feed.FeedPresenter;
 import me.rzknairb.demoapp.views.home.HomeActivity;
 import me.rzknairb.demoapp.views.home.HomePresenter;
 import me.rzknairb.demoapp.views.profile.ProfileFragment;
@@ -17,4 +19,6 @@ public abstract class PresenterViewModule {
     @Binds
     abstract ProfilePresenter.View provieProfileView(ProfileFragment profileFragment);
 
+    @Binds
+    abstract FeedPresenter.View provideFeedView(FeedFragment feedFragment);
 }
