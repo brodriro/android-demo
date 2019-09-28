@@ -65,13 +65,16 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        profilePresenter.start();
-        initViews();
     }
 
     private void initViews() {
         ivEmail.setVisibility(View.GONE);
         ivPhone.setVisibility(View.GONE);
+
+        years.setText("");
+        email.setText("");
+        location.setText("");
+        occupation.setText("");
     }
 
     @Override
@@ -80,6 +83,8 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, view);
+        profilePresenter.start();
+        initViews();
         return view;
     }
 

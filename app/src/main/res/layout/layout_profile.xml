@@ -83,7 +83,6 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/layout_radius_top_left_right"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -190,13 +189,13 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profile_friends"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_friends"
                     android:textSize="@dimen/profile_social_text_size" />
 
                 <TextView
+                    android:id="@+id/profile_friends"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_metrics"

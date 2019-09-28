@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -33,7 +34,7 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Bo
 
     private void initViews() {
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setSelectedItemId(0);
+        startFragment(ProfileFragment.newInstance());
     }
 
     @Override
@@ -41,11 +42,15 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Bo
 
         switch (item.getItemId()) {
             case R.id.action_profile:
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, ProfileFragment.newInstance())
-                        .commit();
+                startFragment(ProfileFragment.newInstance());
                 break;
         }
         return false;
+    }
+
+    private void startFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit();
     }
 }
