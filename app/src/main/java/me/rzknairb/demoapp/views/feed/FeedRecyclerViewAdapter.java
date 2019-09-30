@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -14,12 +15,17 @@ import me.rzknairb.domain.entities.Feed;
 
 public class FeedRecyclerViewAdapter extends RecyclerView.Adapter<FeedRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Feed> mValues;
+    private List<Feed> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public FeedRecyclerViewAdapter(List<Feed> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public FeedRecyclerViewAdapter(OnListFragmentInteractionListener listener) {
         mListener = listener;
+        mValues = new ArrayList<>();
+    }
+
+    public void setList(List<Feed> list) {
+        mValues = list;
+        notifyDataSetChanged();
     }
 
     @Override

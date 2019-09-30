@@ -11,11 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseFragment;
@@ -36,6 +36,11 @@ public class FeedFragment extends BaseFragment implements FeedRecyclerViewAdapte
 
 
 
+    @BindView(R.id.recycler_feed)
+    RecyclerView recyclerView;
+
+    private FeedRecyclerViewAdapter adapter;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,13 +53,10 @@ public class FeedFragment extends BaseFragment implements FeedRecyclerViewAdapte
         ButterKnife.bind(this, view);
         presenter.start();
 
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new FeedRecyclerViewAdapter(new ArrayList<>(), this));
-        }
+        adapter = new FeedRecyclerViewAdapter(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerView.setAdapter(adapter);
+
         return view;
     }
 
@@ -76,6 +78,7 @@ public class FeedFragment extends BaseFragment implements FeedRecyclerViewAdapte
 
     @Override
     public void feedReady(List<Feed> feed) {
+        adapter.setList(feed);
         Toast.makeText(this.getContext(), "Feed is Ready with " + feed.size() + "elements", Toast.LENGTH_LONG).show();
     }
 
