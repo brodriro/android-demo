@@ -16,4 +16,6 @@
     <string name="profile_email">rzknairb@gmail.com</string>
     <string name="profile_location">Trujillo, Peru</string>
     <string name="profile_occupation">Developer</string>
+    <string name="feed_username">Dave</string>
+    <string name="feed_description">Quia et suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum</string>
 </resources>

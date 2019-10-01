@@ -49,7 +49,7 @@ public class FeedFragment extends BaseFragment implements FeedRecyclerViewAdapte
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_feed_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_feed, container, false);
         ButterKnife.bind(this, view);
         presenter.start();
 

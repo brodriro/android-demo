@@ -8,4 +8,6 @@
     <dimen name="separator_height">36dp</dimen>
     <dimen name="profile_margin_vertical">24dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="feed_username">18sp</dimen>
+    <dimen name="feed_description">16sp</dimen>
 </resources>
