@@ -18,4 +18,6 @@
     <string name="profile_occupation">Developer</string>
     <string name="feed_username">Dave</string>
     <string name="feed_description">Quia et suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum</string>
+    <string name="feed_item_like">16</string>
+    <string name="feed_item_comment">Comment</string>
 </resources>

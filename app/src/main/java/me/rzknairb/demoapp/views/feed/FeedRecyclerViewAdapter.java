@@ -3,13 +3,18 @@ package me.rzknairb.demoapp.views.feed;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.domain.entities.Feed;
 
@@ -39,8 +44,12 @@ public class FeedRecyclerViewAdapter extends RecyclerView.Adapter<FeedRecyclerVi
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Feed post = mValues.get(position);
 
+        holder.description.setText(post.getBody());
+        holder.username.setText(post.getUsername());
+        holder.tv_likes.setText(post.getLikes());
+        holder.bt_comment.setOnClickListener(v -> mListener.onListFragmentInteraction(post));
 
-        holder.mView.setOnClickListener(v -> mListener.onListFragmentInteraction(post));
+        //TODO implement imageViews with Glide
     }
 
     @Override
@@ -49,6 +58,19 @@ public class FeedRecyclerViewAdapter extends RecyclerView.Adapter<FeedRecyclerVi
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.iv_feed_row_profile)
+        CircleImageView userImage;
+        @BindView(R.id.iv_feed_item_main)
+        ImageView mainImage;
+        @BindView(R.id.tv_feed_item_description)
+        TextView description;
+        @BindView(R.id.tv_feed_item_username)
+        TextView username;
+        @BindView(R.id.btn_feed_item_comment)
+        Button bt_comment;
+        @BindView(R.id.tv_feed_item_likes)
+        TextView tv_likes;
+
         public final View mView;
 
 
