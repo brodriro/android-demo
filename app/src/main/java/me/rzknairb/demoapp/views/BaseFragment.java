@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 
 import com.uber.autodispose.lifecycle.CorrespondingEventsFunction;
 import com.uber.autodispose.lifecycle.LifecycleEndedException;

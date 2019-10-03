@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasActivityInjector;
-import dagger.android.HasFragmentInjector;
 import dagger.android.support.HasSupportFragmentInjector;
 import me.rzknairb.demoapp.di.components.DaggerAppComponent;
 

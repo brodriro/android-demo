@@ -1,6 +1,5 @@
 package me.rzknairb.demoapp.views;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import com.uber.autodispose.lifecycle.CorrespondingEventsFunction;
