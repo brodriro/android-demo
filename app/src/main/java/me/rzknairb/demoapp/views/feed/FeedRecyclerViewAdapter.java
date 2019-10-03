@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,12 +46,18 @@ public class FeedRecyclerViewAdapter extends RecyclerView.Adapter<FeedRecyclerVi
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Feed post = mValues.get(position);
 
-        holder.description.setText(post.getBody());
+        holder.description.setText(post.getBody().replace("\n", ""));
         holder.username.setText(post.getUsername());
         holder.tv_likes.setText(post.getLikes());
         holder.bt_comment.setOnClickListener(v -> mListener.onListFragmentInteraction(post));
 
-        //TODO implement imageViews with Glide
+        Glide.with(holder.itemView.getContext())
+                .load(post.getUser_image())
+                .centerCrop()
+                .into(holder.userImage);
+        Glide.with(holder.itemView.getContext())
+                .load(post.getImage())
+                .into(holder.mainImage);
     }
 
     @Override

@@ -20,4 +20,6 @@
     <string name="feed_description">Quia et suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum</string>
     <string name="feed_item_like">16</string>
     <string name="feed_item_comment">Comment</string>
+    <string name="title_comment_list">Items</string>
+    <string name="title_comment_detail">Comment Detail</string>
 </resources>

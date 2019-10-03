@@ -19,6 +19,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseFragment;
+import me.rzknairb.demoapp.views.comments.CommentActivity;
 import me.rzknairb.domain.entities.Feed;
 
 
@@ -73,13 +74,12 @@ public class FeedFragment extends BaseFragment implements FeedRecyclerViewAdapte
 
     @Override
     public void onListFragmentInteraction(Feed item) {
-        Toast.makeText(this.getContext(), "Hello Dummy:", Toast.LENGTH_SHORT).show();
+        startActivity(CommentActivity.getCallIntent(getContext(), item));
     }
 
     @Override
     public void feedReady(List<Feed> feed) {
         adapter.setList(feed);
-        Toast.makeText(this.getContext(), "Feed is Ready with " + feed.size() + "elements", Toast.LENGTH_LONG).show();
     }
 
     @Override
