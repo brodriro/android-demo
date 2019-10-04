@@ -3,7 +3,10 @@ package me.rzknairb.demoapp.views.comments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.gson.Gson;
 
@@ -33,8 +36,14 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
         setContentView(R.layout.activity_comment);
         ButterKnife.bind(this);
 
+        initToolbar();
         presenter.start(getIntent().getStringExtra(PARAM_POST));
+    }
 
+    private void initToolbar() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -45,5 +54,19 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
     @Override
     public void onError() {
         Toast.makeText(this, "onError", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

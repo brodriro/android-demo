@@ -21,7 +21,10 @@ public class CommentPresenter extends BasePresenter<CommentPresenter.View> {
 
     public void start(String post) {
       Feed feed =   new Gson().fromJson(post, Feed.class);
-      if (feed == null) getView().onError();
+      if (feed == null) {
+          getView().onError();
+          return;
+      }
 
       getView().onDataReady(feed);
     }
