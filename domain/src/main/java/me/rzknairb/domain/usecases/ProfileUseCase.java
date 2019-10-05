@@ -13,12 +13,25 @@ public class ProfileUseCase {
     @Inject
     UserRemoteRepository userRemoteRepository;
 
+    private User session;
+
     @Inject
     ProfileUseCase() {
     }
 
 
     public Single<User> getProfile() {
-        return userRemoteRepository.getProfile();
+        return userRemoteRepository.getProfile().map(user -> {
+            setSession(user);
+            return  user;
+        });
+    }
+
+    public void setSession(User session) {
+        this.session = session;
+    }
+
+    public User getSession() {
+        return session;
     }
 }

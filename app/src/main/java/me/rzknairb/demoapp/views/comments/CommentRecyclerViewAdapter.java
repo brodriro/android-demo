@@ -4,10 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,8 +30,12 @@ public class CommentRecyclerViewAdapter extends RecyclerView.Adapter<CommentRecy
     }
 
     public void setList(List<Feed.Comment> list) {
-        Log.e("COMMENT", "size:"+list.size());
+        Log.e("COMMENT", "size:" + list.size());
         mValues = list;
+        notifyDataSetChanged();
+    }
+    public void addComment(Feed.Comment comment){
+        mValues.add(comment);
         notifyDataSetChanged();
     }
 

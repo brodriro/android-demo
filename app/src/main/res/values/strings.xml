@@ -23,4 +23,6 @@
     <string name="title_comment_list">Items</string>
     <string name="title_comment_detail">Comment Detail</string>
     <string name="comment_item_example">Great! Good Job bro</string>
+    <string name="enter_message">Enter message</string>
+    <string name="input_empty">Input is empty</string>
 </resources>

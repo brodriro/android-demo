@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -15,6 +17,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseActivity;
 import me.rzknairb.domain.entities.Feed;
@@ -36,6 +39,8 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
 
     @BindView(R.id.recycler_comments)
     RecyclerView recyclerView;
+    @BindView(R.id.et_new_comment)
+    EditText newCommnet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,16 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
     }
 
     @Override
+    public void onCommentIsEmpty() {
+        Toast.makeText(getApplicationContext(), getString(R.string.input_empty), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNewComment(Feed.Comment comment) {
+        adapter.addComment(comment);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -86,5 +101,9 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
     @Override
     public void onClickProfile(String idProfile) {
         Toast.makeText(this, "onClickProfile", Toast.LENGTH_SHORT).show();
+    }
+    @OnClick(R.id.btn_comment_send)
+    public void onClickNewComment(View v) {
+        presenter.onNewComment(newCommnet.getText().toString());
     }
 }
