@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="12dp"
+    android:layout_marginStart="@dimen/margin_horizontal_base"
+    android:layout_marginEnd="@dimen/margin_horizontal_base"
+    android:layout_marginTop="@dimen/margin_comment_item_row"
+    android:layout_marginBottom="@dimen/margin_comment_item_row"
     android:elevation="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout

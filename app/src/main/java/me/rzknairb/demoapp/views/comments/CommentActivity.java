@@ -7,17 +7,19 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseActivity;
 import me.rzknairb.domain.entities.Feed;
 
-public class CommentActivity extends BaseActivity implements CommentPresenter.View {
+public class CommentActivity extends BaseActivity implements CommentPresenter.View, CommentRecyclerViewAdapter.OnClickProfileListener {
 
     private static final String PARAM_POST = "FEED";
 
@@ -30,6 +32,11 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
     @Inject
     CommentPresenter presenter;
 
+    private CommentRecyclerViewAdapter adapter;
+
+    @BindView(R.id.recycler_comments)
+    RecyclerView recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +44,13 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
         ButterKnife.bind(this);
 
         initToolbar();
+        initViews();
         presenter.start(getIntent().getStringExtra(PARAM_POST));
+    }
+
+    private void initViews() {
+        adapter = new CommentRecyclerViewAdapter(this);
+        recyclerView.setAdapter(adapter);
     }
 
     private void initToolbar() {
@@ -48,7 +61,7 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
 
     @Override
     public void onDataReady(Feed post) {
-        Toast.makeText(this, "onDataIsReady", Toast.LENGTH_SHORT).show();
+        adapter.setList(post.getComment());
     }
 
     @Override
@@ -68,5 +81,10 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClickProfile(String idProfile) {
+        Toast.makeText(this, "onClickProfile", Toast.LENGTH_SHORT).show();
     }
 }
