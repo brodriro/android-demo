@@ -54,12 +54,19 @@ public class CommentPresenter extends BasePresenter<CommentPresenter.View> {
         getView().onNewComment(mComment);
     }
 
+    public void onClickProfile(String idProfile) {
+        getView().goToUserProfile(idProfile);
+    }
+
     public interface View extends BasePresenter.View {
         void onDataReady(Feed post);
 
         void onError();
 
         void onCommentIsEmpty();
+
         void onNewComment(Feed.Comment comment);
+
+        void goToUserProfile(String idProfile);
     }
 }

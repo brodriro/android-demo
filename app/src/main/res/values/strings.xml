@@ -25,4 +25,8 @@
     <string name="comment_item_example">Great! Good Job bro</string>
     <string name="enter_message">Enter message</string>
     <string name="input_empty">Input is empty</string>
+
+    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

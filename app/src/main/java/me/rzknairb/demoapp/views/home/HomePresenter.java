@@ -13,7 +13,7 @@ public class HomePresenter extends BasePresenter<HomePresenter.View> {
         super(view);
     }
 
-    public interface View extends BasePresenter.View{
+    public interface View extends BasePresenter.View {
 
     }
 }

@@ -7,6 +7,7 @@ import me.rzknairb.demoapp.views.comments.CommentActivity;
 import me.rzknairb.demoapp.views.feed.FeedFragment;
 import me.rzknairb.demoapp.views.home.HomeActivity;
 import me.rzknairb.demoapp.views.profile.ProfileFragment;
+import me.rzknairb.demoapp.views.user_profile.UserProfileActivity;
 
 @Module(includes = AndroidSupportInjectionModule.class)
 public abstract class ActivityBindingModule {
@@ -22,4 +23,7 @@ public abstract class ActivityBindingModule {
 
     @ContributesAndroidInjector(modules = {PresenterViewModule.class})
     abstract CommentActivity commentActivityInjector();
+
+    @ContributesAndroidInjector(modules = {PresenterViewModule.class})
+    abstract UserProfileActivity userProfileActivityInjectoy();
 }

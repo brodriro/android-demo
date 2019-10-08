@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseActivity;
+import me.rzknairb.demoapp.views.user_profile.UserProfileActivity;
 import me.rzknairb.domain.entities.Feed;
 
 public class CommentActivity extends BaseActivity implements CommentPresenter.View, CommentRecyclerViewAdapter.OnClickProfileListener {
@@ -82,6 +82,12 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
     @Override
     public void onNewComment(Feed.Comment comment) {
         adapter.addComment(comment);
+        newCommnet.getText().clear();
+    }
+
+    @Override
+    public void goToUserProfile(String idProfile) {
+        startActivity(UserProfileActivity.getCallIntent(this, idProfile));
     }
 
     @Override
@@ -100,10 +106,11 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
 
     @Override
     public void onClickProfile(String idProfile) {
-        Toast.makeText(this, "onClickProfile", Toast.LENGTH_SHORT).show();
+        presenter.onClickProfile(idProfile);
     }
+
     @OnClick(R.id.btn_comment_send)
-    public void onClickNewComment(View v) {
+    public void onClickNewComment(android.view.View v) {
         presenter.onNewComment(newCommnet.getText().toString());
     }
 }
