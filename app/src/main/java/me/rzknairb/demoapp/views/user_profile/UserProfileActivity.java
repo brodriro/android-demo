@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import javax.inject.Inject;
@@ -68,7 +70,7 @@ public class UserProfileActivity extends BaseActivity implements UserProfilePres
 
         ButterKnife.bind(this);
 
-        presenter.start(getIntent().getStringExtra(USER_ID));
+       // presenter.start(getIntent().getStringExtra(USER_ID));
         initViews();
 
     }

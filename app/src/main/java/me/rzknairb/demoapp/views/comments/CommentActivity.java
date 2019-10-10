@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -110,7 +111,7 @@ public class CommentActivity extends BaseActivity implements CommentPresenter.Vi
     }
 
     @OnClick(R.id.btn_comment_send)
-    public void onClickNewComment(android.view.View v) {
+    public void onClickNewComment(View v) {
         presenter.onNewComment(newCommnet.getText().toString());
     }
 }

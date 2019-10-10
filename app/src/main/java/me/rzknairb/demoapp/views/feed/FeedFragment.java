@@ -3,6 +3,7 @@ package me.rzknairb.demoapp.views.feed;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
@@ -48,9 +49,9 @@ public class FeedFragment extends BaseFragment implements FeedRecyclerViewAdapte
     }
 
     @Override
-    public android.view.View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                                          Bundle savedInstanceState) {
-        android.view.View view = inflater.inflate(R.layout.fragment_feed, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_feed, container, false);
         ButterKnife.bind(this, view);
         presenter.start();
 

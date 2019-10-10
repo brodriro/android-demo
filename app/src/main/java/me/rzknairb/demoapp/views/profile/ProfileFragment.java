@@ -3,6 +3,7 @@ package me.rzknairb.demoapp.views.profile;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -76,8 +77,8 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
     }
 
     @Override
-    public android.view.View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                          Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         android.view.View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, view);
