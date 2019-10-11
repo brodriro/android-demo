@@ -24,16 +24,17 @@
 
     <TextView
         android:id="@+id/profile_fullname"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
         android:textColor="@color/white"
         android:textSize="@dimen/profile_title_size"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
     <ImageButton
         android:id="@+id/profile_ibPhone"
@@ -66,13 +67,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/layout_radius_top_left_right"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image">
+        app:layout_constraintTop_toBottomOf="@+id/profile_fullname"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/container_social_metrics"
@@ -95,6 +97,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_likes"
+                    android:textColor="@color/colorText"
                     android:textSize="@dimen/profile_social_text_size" />
 
                 <TextView
@@ -102,6 +105,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_metrics"
+                    android:textColor="@color/colorText"
                     android:textSize="@dimen/profile_social_text_size" />
             </LinearLayout>
 
@@ -122,6 +126,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_posts"
+                    android:textColor="@color/colorText"
                     android:textSize="@dimen/profile_social_text_size" />
 
                 <TextView
@@ -129,6 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_metrics"
+                    android:textColor="@color/colorText"
                     android:textSize="@dimen/profile_social_text_size" />
             </LinearLayout>
 
@@ -149,6 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_shares"
+                    android:textColor="@color/colorText"
                     android:textSize="@dimen/profile_social_text_size" />
 
                 <TextView
@@ -156,6 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_metrics"
+                    android:textColor="@color/colorText"
                     android:textSize="@dimen/profile_social_text_size" />
             </LinearLayout>
 
@@ -176,6 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_friends"
+                    android:textColor="@color/colorText"
                     android:textSize="@dimen/profile_social_text_size" />
 
                 <TextView
@@ -183,6 +192,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/profile_social_metrics"
+                    android:textColor="@color/colorText"
                     android:textSize="@dimen/profile_social_text_size" />
             </LinearLayout>
 
@@ -211,6 +221,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/profile_years"
+                android:textColor="@color/colorText"
                 android:textSize="@dimen/profile_tags" />
         </LinearLayout>
 
@@ -238,6 +249,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/profile_email"
+                android:textColor="@color/colorText"
                 android:textSize="@dimen/profile_tags" />
         </LinearLayout>
 
@@ -265,6 +277,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/profile_location"
+                android:textColor="@color/colorText"
                 android:textSize="@dimen/profile_tags" />
         </LinearLayout>
 
@@ -292,6 +305,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/profile_occupation"
+                android:textColor="@color/colorText"
                 android:textSize="@dimen/profile_tags" />
         </LinearLayout>
 

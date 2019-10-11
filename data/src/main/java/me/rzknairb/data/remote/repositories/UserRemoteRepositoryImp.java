@@ -35,4 +35,10 @@ public class UserRemoteRepositoryImp extends RetrofitRepository implements UserR
             return userList;
         });
     }
+
+    @Override
+    public Single<User> getUserById(String userId) {
+        API api = getRetrofit(API.BASE_URL).create(API.class);
+        return api.getUserById(userId).map(userResponses -> userResponses.get(0).toUser());
+    }
 }

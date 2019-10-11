@@ -11,4 +11,6 @@ public interface UserRemoteRepository {
 
     Single<List<User>> getUsers();
 
+    Single<User> getUserById(String userId);
+
 }

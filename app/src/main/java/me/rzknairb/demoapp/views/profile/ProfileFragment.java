@@ -1,6 +1,9 @@
 package me.rzknairb.demoapp.views.profile;
 
 import android.content.Context;
+import android.content.Intent;
+import android.gesture.GestureLibraries;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +12,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.rzknairb.demoapp.R;
 import me.rzknairb.demoapp.views.BaseFragment;
@@ -80,7 +86,7 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        android.view.View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, view);
         profilePresenter.start();
         initViews();
@@ -99,6 +105,12 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
 
     @Override
     public void onLoadProfile(User user) {
+        if (!user.getImage().trim().isEmpty() && getContext() != null){
+            Glide.with(getContext())
+                    .load(user.getImage())
+                    .centerCrop()
+                    .into(imageView);
+        }
         tvFullname.setText(String.format("%s %s", user.getName(), user.getLastname()));
         years.setText(user.getAge());
         email.setText(user.getEmail());

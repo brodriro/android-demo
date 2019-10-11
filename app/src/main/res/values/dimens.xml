@@ -2,9 +2,9 @@
 <resources>
     <dimen name="layout_normal_radius">30dp</dimen>
     <dimen name="profile_title_size">18sp</dimen>
-    <dimen name="margin_profile_social_metrics">12dp</dimen>
-    <dimen name="profile_social_text_size">18sp</dimen>
-    <dimen name="profile_tags">18sp</dimen>
+    <dimen name="margin_profile_social_metrics">10dp</dimen>
+    <dimen name="profile_social_text_size">16sp</dimen>
+    <dimen name="profile_tags">16sp</dimen>
     <dimen name="separator_height">36dp</dimen>
     <dimen name="profile_margin_vertical">24dp</dimen>
     <dimen name="text_margin">16dp</dimen>
