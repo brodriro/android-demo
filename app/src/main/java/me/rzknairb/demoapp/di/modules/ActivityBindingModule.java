@@ -5,6 +5,7 @@ import dagger.android.ContributesAndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 import me.rzknairb.demoapp.views.comments.CommentActivity;
 import me.rzknairb.demoapp.views.feed.FeedFragment;
+import me.rzknairb.demoapp.views.friends.FriendsFragment;
 import me.rzknairb.demoapp.views.home.HomeActivity;
 import me.rzknairb.demoapp.views.profile.ProfileFragment;
 import me.rzknairb.demoapp.views.user_profile.UserProfileActivity;
@@ -25,5 +26,8 @@ public abstract class ActivityBindingModule {
     abstract CommentActivity commentActivityInjector();
 
     @ContributesAndroidInjector(modules = {PresenterViewModule.class})
-    abstract UserProfileActivity userProfileActivityInjectoy();
+    abstract UserProfileActivity userProfileActivityInjector();
+
+    @ContributesAndroidInjector(modules = {PresenterViewModule.class})
+    abstract FriendsFragment friendsFragmentInjector();
 }
