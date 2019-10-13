@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Single;
 import me.rzknairb.data.remote.API;
+import me.rzknairb.data.remote.entities.UserResponse;
 import me.rzknairb.domain.entities.User;
 import me.rzknairb.domain.repositories.UserRemoteRepository;
 
@@ -29,8 +30,8 @@ public class UserRemoteRepositoryImp extends RetrofitRepository implements UserR
         return api.getUsers().map(userResponses -> {
             List<User> userList = new ArrayList<>();
 
-            if (userResponses != null){
-                //TODO IMPLEMENT
+            if (userResponses != null) {
+                for (UserResponse row : userResponses) userList.add(row.toUser());
             }
             return userList;
         });

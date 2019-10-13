@@ -17,4 +17,6 @@
     <dimen name="margin_horizontal_base">16dp</dimen>
     <dimen name="comment_item_textsize">16sp</dimen>
     <dimen name="margin_comment_item_row">8dp</dimen>
+    <dimen name="friends_image_dimen">68dp</dimen>
+    <dimen name="friends_item_name_textsize">18sp</dimen>
 </resources>
