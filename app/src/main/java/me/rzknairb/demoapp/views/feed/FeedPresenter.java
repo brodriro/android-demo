@@ -28,6 +28,8 @@ public class FeedPresenter extends BasePresenter<FeedPresenter.View> {
         useCase.getFeed()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> getView().showLoading())
+                .doFinally(() -> getView().hideLoading())
                 .as(AutoDispose.autoDisposable(getView()))
                 .subscribe(
                         feed -> getView().feedReady(feed),
@@ -40,5 +42,9 @@ public class FeedPresenter extends BasePresenter<FeedPresenter.View> {
         void feedReady(List<Feed> feed);
 
         void onErrorList();
+
+        void showLoading();
+
+        void hideLoading();
     }
 }

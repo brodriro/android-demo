@@ -10,13 +10,14 @@ import dagger.android.support.DaggerAppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.annotations.Nullable;
 import io.reactivex.subjects.BehaviorSubject;
+import me.rzknairb.demoapp.utils.ProgressBarHandler;
 
 /*
 Basado en https://github.com/uber/AutoDispose/tree/master/sample/src/main/java/com/uber/autodispose/recipes
 con soporte añadido para Dagger
  */
 
-public abstract class  BaseActivity extends DaggerAppCompatActivity implements LifecycleScopeProvider<BaseActivity.ActivityEvent> {
+public abstract class BaseActivity extends DaggerAppCompatActivity implements LifecycleScopeProvider<BaseActivity.ActivityEvent> {
 
     public enum ActivityEvent {
         CREATE,
@@ -27,6 +28,7 @@ public abstract class  BaseActivity extends DaggerAppCompatActivity implements L
         DESTROY
     }
 
+    protected ProgressBarHandler progressBarHandler;
     private static final CorrespondingEventsFunction<ActivityEvent> CORRESPONDING_EVENTS = activityEvent -> {
         switch (activityEvent) {
             case CREATE:
@@ -66,6 +68,7 @@ public abstract class  BaseActivity extends DaggerAppCompatActivity implements L
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lifecycleEvents.onNext(ActivityEvent.CREATE);
+        progressBarHandler = new ProgressBarHandler(this);
     }
 
     @Override
@@ -96,5 +99,13 @@ public abstract class  BaseActivity extends DaggerAppCompatActivity implements L
     protected void onDestroy() {
         lifecycleEvents.onNext(ActivityEvent.DESTROY);
         super.onDestroy();
+    }
+
+    protected void showProgressBar() {
+        progressBarHandler.show();
+    }
+
+    protected void hideProgressBar() {
+        progressBarHandler.hide();
     }
 }

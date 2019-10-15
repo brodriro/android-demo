@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.gesture.GestureLibraries;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.bumptech.glide.Glide;
+
+import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
@@ -21,11 +26,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.rzknairb.demoapp.R;
+import me.rzknairb.demoapp.utils.ProgressBarHandler;
 import me.rzknairb.demoapp.views.BaseFragment;
 import me.rzknairb.domain.entities.User;
 
 public class ProfileFragment extends BaseFragment implements ProfilePresenter.View {
 
+    private static final String TAG = ProfileFragment.class.getSimpleName();
     @Inject
     ProfilePresenter profilePresenter;
 
@@ -88,9 +95,14 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, view);
-        profilePresenter.start();
         initViews();
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        profilePresenter.start();
     }
 
     @Override
@@ -126,5 +138,15 @@ public class ProfileFragment extends BaseFragment implements ProfilePresenter.Vi
     @Override
     public void onErrorProfile() {
         Toast.makeText(this.getContext(), "Error al cargar Perfil", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showLoading() {
+        showProgressBar();
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressBar();
     }
 }

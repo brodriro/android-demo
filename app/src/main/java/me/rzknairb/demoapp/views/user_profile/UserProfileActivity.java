@@ -139,4 +139,14 @@ public class UserProfileActivity extends BaseActivity implements UserProfilePres
         Toast.makeText(this, "Error al cargar usuario", Toast.LENGTH_SHORT).show();
         finish();
     }
+
+    @Override
+    public void showLoading() {
+        showProgressBar();
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressBar();
+    }
 }

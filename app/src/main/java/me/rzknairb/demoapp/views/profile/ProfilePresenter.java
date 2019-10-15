@@ -27,6 +27,8 @@ public class ProfilePresenter extends BasePresenter<ProfilePresenter.View> {
         profileUseCase.getProfile()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> getView().showLoading() )
+                .doFinally(() -> getView().hideLoading())
                 .as(AutoDispose.autoDisposable(getView()))
                 .subscribe(
                         user -> getView().onLoadProfile(user),
@@ -39,5 +41,9 @@ public class ProfilePresenter extends BasePresenter<ProfilePresenter.View> {
         void onLoadProfile(User user);
 
         void onErrorProfile();
+
+        void showLoading();
+
+        void hideLoading();
     }
 }

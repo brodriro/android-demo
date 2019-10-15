@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -59,24 +60,34 @@ public class FriendsFragment extends BaseFragment implements FriendsPresenter.Vi
 
         friendsAdapter.addListener(this);
         recyclerView.setAdapter(friendsAdapter);
-
-        presenter.start();
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        presenter.start();
     }
 
     @Override
     public void onDataReady(List<User> list) {
         this.friendsAdapter.updateList(list);
-        Toast.makeText(context, "Lista Completa", Toast.LENGTH_SHORT).show();
-        if (getView() != null)
-            Snackbar.make(getView(), "Lista Completa", Snackbar.LENGTH_SHORT).show();
-
     }
 
     @Override
     public void onError() {
         if (getView() != null)
             Snackbar.make(getView(), "Error al obtener la lista de Amigos", Snackbar.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showLoading() {
+        showProgressBar();
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressBar();
     }
 
     @Override

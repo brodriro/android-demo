@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,7 +54,6 @@ public class FeedFragment extends BaseFragment implements FeedRecyclerViewAdapte
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
         ButterKnife.bind(this, view);
-        presenter.start();
 
         adapter = new FeedRecyclerViewAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -62,6 +62,11 @@ public class FeedFragment extends BaseFragment implements FeedRecyclerViewAdapte
         return view;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        presenter.start();
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -86,5 +91,15 @@ public class FeedFragment extends BaseFragment implements FeedRecyclerViewAdapte
     @Override
     public void onErrorList() {
         Toast.makeText(this.getContext(), "Network Error", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showLoading() {
+        showProgressBar();
+    }
+
+    @Override
+    public void hideLoading() {
+        hideProgressBar();
     }
 }

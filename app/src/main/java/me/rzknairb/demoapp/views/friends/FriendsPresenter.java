@@ -31,6 +31,8 @@ public class FriendsPresenter extends BasePresenter<FriendsPresenter.View> {
     public void start() {
         useCase.getFriends()
                 .subscribeOn(Schedulers.io())
+                .doOnSubscribe(disposable -> getView().showLoading())
+                .doFinally(() -> getView().hideLoading())
                 .observeOn(AndroidSchedulers.mainThread())
                 .as(AutoDispose.autoDisposable(getView()))
                 .subscribe(list -> getView().onDataReady(list), throwable -> getView().onError());
@@ -40,5 +42,9 @@ public class FriendsPresenter extends BasePresenter<FriendsPresenter.View> {
         void onDataReady(List<User> list);
 
         void onError();
+
+        void showLoading();
+
+        void hideLoading();
     }
 }

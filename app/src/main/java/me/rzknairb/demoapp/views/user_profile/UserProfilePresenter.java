@@ -30,6 +30,8 @@ public class UserProfilePresenter extends BasePresenter<UserProfilePresenter.Vie
         useCase.getUserById(userId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe(disposable -> getView().showLoading())
+                .doFinally(() -> getView().hideLoading())
                 .as(AutoDispose.autoDisposable(getView()))
                 .subscribe(
                         user -> getView().onProfileReady(user),
@@ -40,5 +42,9 @@ public class UserProfilePresenter extends BasePresenter<UserProfilePresenter.Vie
     public interface View extends BasePresenter.View{
         void onProfileReady(User user);
         void onErrorProfile();
+
+        void showLoading();
+
+        void hideLoading();
     }
 }
