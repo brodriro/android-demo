@@ -30,4 +30,10 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="friend_item_fullname">Brian Rodriguez</string>
+    <string name="promp_profile_content">Opten la información de tu perfil de manera rápida y fácil</string>
+    <string name="promp_profile_title">Perfil</string>
+    <string name="promp_feed_title">Publicaciones</string>
+    <string name="promp_feed_content">Opten la información de tu perfil de forma fácil y rápida</string>
+    <string name="promp_friend_title">Amigos </string>
+    <string name="promp_friend_content">Opten la lista de tus amigos,<b>World</b> puedes revisa su perfil, llamarlo por teléfono o enviarle un mail!</string>
 </resources>

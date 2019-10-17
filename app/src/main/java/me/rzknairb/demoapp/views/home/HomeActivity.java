@@ -1,12 +1,16 @@
 package me.rzknairb.demoapp.views.home;
 
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.awt.font.TextAttribute;
+import java.text.AttributedString;
 
 import javax.inject.Inject;
 
@@ -17,6 +21,7 @@ import me.rzknairb.demoapp.views.BaseActivity;
 import me.rzknairb.demoapp.views.feed.FeedFragment;
 import me.rzknairb.demoapp.views.friends.FriendsFragment;
 import me.rzknairb.demoapp.views.profile.ProfileFragment;
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 public class HomeActivity extends BaseActivity implements HomePresenter.View, BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -37,6 +42,49 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Bo
     private void initViews() {
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         startFragment(ProfileFragment.newInstance());
+
+        int baseColor = getResources().getColor(R.color.colorPrimary);
+
+        MaterialTapTargetPrompt.Builder targetProfile = new MaterialTapTargetPrompt.Builder(this)
+                .setTarget(R.id.action_profile)
+                .setPrimaryText(getResources().getString(R.string.promp_profile_title))
+                .setSecondaryText(getResources().getString(R.string.promp_profile_content))
+                .setBackgroundColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setFocalColour(baseColor)
+                .setAutoDismiss(true);
+
+        MaterialTapTargetPrompt.Builder targetFeed = new MaterialTapTargetPrompt.Builder(this)
+                .setTarget(R.id.action_feed)
+                .setPrimaryText(getResources().getString(R.string.promp_feed_title))
+                .setSecondaryText(getResources().getString(R.string.promp_feed_content))
+                .setBackgroundColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setFocalColour(baseColor)
+                .setAutoDismiss(true);
+
+        CharSequence charSequence ;
+
+
+        MaterialTapTargetPrompt.Builder targetFriends = new MaterialTapTargetPrompt.Builder(this)
+                .setTarget(R.id.action_friends)
+                .setPrimaryText(getResources().getString(R.string.promp_friend_title))
+                .setSecondaryText(getResources().getString(R.string.promp_friend_content))
+                .setBackgroundColour(getResources().getColor(R.color.colorPrimaryDark))
+                .setFocalColour(baseColor)
+                .setAutoDismiss(true);
+
+        targetProfile.setPromptStateChangeListener((prompt, state) -> {
+            if (state == MaterialTapTargetPrompt.STATE_DISMISSED) {
+                targetFeed.show();
+            }
+        }).show();
+
+        targetFeed.setPromptStateChangeListener((prompt, state) -> {
+            if (state == MaterialTapTargetPrompt.STATE_DISMISSED) {
+                targetFriends.show();
+            }
+        });
+
+
     }
 
     @Override
