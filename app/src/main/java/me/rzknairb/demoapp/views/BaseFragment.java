@@ -10,6 +10,8 @@ import com.uber.autodispose.lifecycle.CorrespondingEventsFunction;
 import com.uber.autodispose.lifecycle.LifecycleEndedException;
 import com.uber.autodispose.lifecycle.LifecycleScopeProvider;
 
+import javax.inject.Inject;
+
 import dagger.android.support.DaggerFragment;
 import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
@@ -29,6 +31,7 @@ public abstract class BaseFragment extends DaggerFragment implements LifecycleSc
         DETACH
     }
 
+    @Inject
     protected ProgressBarHandler progressBarHandler;
 
     private static final CorrespondingEventsFunction<FragmentEvent> CORRESPONDING_EVENTS =
@@ -92,7 +95,7 @@ public abstract class BaseFragment extends DaggerFragment implements LifecycleSc
         super.onViewCreated(view, savedInstanceState);
         lifecycleEvents.onNext(FragmentEvent.CREATE_VIEW);
 
-        this.progressBarHandler = new ProgressBarHandler(view.getContext());
+        this.progressBarHandler.build(view.getContext());
     }
 
     @Override

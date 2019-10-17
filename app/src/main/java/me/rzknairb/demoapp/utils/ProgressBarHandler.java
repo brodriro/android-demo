@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import javax.inject.Inject;
+
 /**
  * Created by Brian Rodriguez on 14/10/2019
  */
@@ -16,7 +18,11 @@ public class ProgressBarHandler {
     private Context mContext;
 
 
-    public ProgressBarHandler(Context context) {
+    @Inject
+    public ProgressBarHandler() {
+    }
+
+    public void build(Context context) {
         mContext = context;
 
         ViewGroup layout = (ViewGroup) ((Activity) context).findViewById(android.R.id.content).getRootView();

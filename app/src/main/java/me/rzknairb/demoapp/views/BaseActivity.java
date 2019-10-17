@@ -6,6 +6,8 @@ import com.uber.autodispose.lifecycle.CorrespondingEventsFunction;
 import com.uber.autodispose.lifecycle.LifecycleEndedException;
 import com.uber.autodispose.lifecycle.LifecycleScopeProvider;
 
+import javax.inject.Inject;
+
 import dagger.android.support.DaggerAppCompatActivity;
 import io.reactivex.Observable;
 import io.reactivex.annotations.Nullable;
@@ -28,7 +30,9 @@ public abstract class BaseActivity extends DaggerAppCompatActivity implements Li
         DESTROY
     }
 
+    @Inject
     protected ProgressBarHandler progressBarHandler;
+
     private static final CorrespondingEventsFunction<ActivityEvent> CORRESPONDING_EVENTS = activityEvent -> {
         switch (activityEvent) {
             case CREATE:
@@ -68,7 +72,7 @@ public abstract class BaseActivity extends DaggerAppCompatActivity implements Li
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         lifecycleEvents.onNext(ActivityEvent.CREATE);
-        progressBarHandler = new ProgressBarHandler(this);
+        progressBarHandler.build(this);
     }
 
     @Override
