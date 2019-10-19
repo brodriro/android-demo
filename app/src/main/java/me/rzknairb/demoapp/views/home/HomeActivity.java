@@ -61,9 +61,6 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Bo
                 .setFocalColour(baseColor)
                 .setAutoDismiss(true);
 
-        CharSequence charSequence ;
-
-
         MaterialTapTargetPrompt.Builder targetFriends = new MaterialTapTargetPrompt.Builder(this)
                 .setTarget(R.id.action_friends)
                 .setPrimaryText(getResources().getString(R.string.promp_friend_title))

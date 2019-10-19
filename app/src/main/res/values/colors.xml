@@ -7,4 +7,6 @@
     <color name="colorText">#1F1F1F</color>
 
     <color name="black_overlay">#66000000</color>
+    <color name="colorCallPhone">#66bb6a</color>
+    <color name="colorSendMessage">#29b6f6</color>
 </resources>

@@ -1,14 +1,17 @@
 package me.rzknairb.demoapp.views.friends;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.daimajia.swipe.SwipeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,8 +69,44 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
         if (listener != null) {
             holder.mView.setOnClickListener(v -> listener.onClickItemListener(String.valueOf(user.getId())));
+            holder.mainWrapper.setOnClickListener(v -> holder.mView.callOnClick());
         }
 
+
+        holder.swipeLayout.addDrag(SwipeLayout.DragEdge.Left, holder.leftWrapper);
+        holder.swipeLayout.addDrag(SwipeLayout.DragEdge.Right, holder.rightWrapper);
+        final String LocalTag = "Swipe";
+        holder.swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
+            @Override
+            public void onStartOpen(SwipeLayout layout) {
+                Log.e(LocalTag, "onStartOpen");
+            }
+
+            @Override
+            public void onOpen(SwipeLayout layout) {
+                Log.e(LocalTag, "onOpen");
+            }
+
+            @Override
+            public void onStartClose(SwipeLayout layout) {
+                Log.e(LocalTag, "onStartClose");
+            }
+
+            @Override
+            public void onClose(SwipeLayout layout) {
+                Log.e(LocalTag, "onClose");
+            }
+
+            @Override
+            public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
+                Log.e(LocalTag, "onUpdate");
+            }
+
+            @Override
+            public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
+                Log.e(LocalTag, "onHandRelease");
+            }
+        });
 
     }
 
@@ -81,6 +120,14 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         CircleImageView userImage;
         @BindView(R.id.tv_friend_fullname)
         TextView fullname;
+        @BindView(R.id.swipeLayout_friends_item)
+        SwipeLayout swipeLayout;
+        @BindView(R.id.sfi_leftWrapper)
+        LinearLayout leftWrapper;
+        @BindView(R.id.sfi_rightWrapper)
+        LinearLayout rightWrapper;
+        @BindView(R.id.sfi_mainWrapper)
+        LinearLayout mainWrapper;
 
         public final View mView;
 
