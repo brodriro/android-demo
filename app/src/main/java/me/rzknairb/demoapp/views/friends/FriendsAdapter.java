@@ -79,12 +79,24 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
         holder.swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
             @Override
             public void onStartOpen(SwipeLayout layout) {
-                Log.e(LocalTag, "onStartOpen");
             }
 
             @Override
             public void onOpen(SwipeLayout layout) {
                 Log.e(LocalTag, "onOpen");
+                if (layout.getCurrentBottomView() != null && layout.getCurrentBottomView().getId() == holder.leftWrapper.getId()){
+                    listener.onSwipeLeft(user);
+                    Log.e(LocalTag, "leftWrapper");
+                }
+
+                if (layout.getCurrentBottomView() != null && layout.getCurrentBottomView().getId() == holder.rightWrapper.getId()){
+                    listener.onSwipeRight(user);
+                    Log.e(LocalTag, "rightWrapper");
+                }
+
+                if (layout.getCurrentBottomView() != null && layout.getCurrentBottomView().getId() == holder.mainWrapper.getId()){
+                    Log.e(LocalTag, "mainWrapper");
+                }
             }
 
             @Override
@@ -99,7 +111,6 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
             @Override
             public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
-                Log.e(LocalTag, "onUpdate");
             }
 
             @Override
@@ -140,6 +151,8 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
 
     public interface FriendAdapterListener {
         void onClickItemListener(String idUser);
+        void onSwipeLeft(User user);
+        void onSwipeRight(User user);
     }
 
 }

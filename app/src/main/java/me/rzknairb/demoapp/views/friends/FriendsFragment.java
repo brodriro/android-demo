@@ -94,4 +94,14 @@ public class FriendsFragment extends BaseFragment implements FriendsPresenter.Vi
     public void onClickItemListener(String idUser) {
         startActivity(UserProfileActivity.getCallIntent(this.getContext(), idUser));
     }
+
+    @Override
+    public void onSwipeLeft(User user) {
+        
+    }
+
+    @Override
+    public void onSwipeRight(User user) {
+
+    }
 }
