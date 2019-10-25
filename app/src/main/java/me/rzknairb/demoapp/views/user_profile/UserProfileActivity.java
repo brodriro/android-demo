@@ -2,7 +2,6 @@ package me.rzknairb.demoapp.views.user_profile;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -19,6 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import me.rzknairb.demoapp.R;
+import me.rzknairb.demoapp.utils.Utils;
 import me.rzknairb.demoapp.views.BaseActivity;
 import me.rzknairb.domain.entities.User;
 
@@ -119,19 +119,16 @@ public class UserProfileActivity extends BaseActivity implements UserProfilePres
         occupation.setText(user.getOccupation());
         years.setText(user.getAge());
 
-        ivPhone.setOnClickListener(v -> onCallPhone(v, "+51999000999" /*user.getPhone()*/));
+        ivPhone.setOnClickListener(v -> onCallPhone(v,  user.getPhone()));
         ivEmail.setOnClickListener(v -> onSendEmail(v, user.getEmail(), user.getName()));
     }
 
     private void onSendEmail(View view, String email, String username) {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
-        emailIntent.setData(Uri.parse("mailto:" + email));
-        startActivity(Intent.createChooser(emailIntent, "Hello dear " + username));
+        startActivity(Utils.sendEmailAction(email, username));
     }
 
     private void onCallPhone(View view, String phoneNumber) {
-        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null));
-        startActivity(intent);
+        startActivity(Utils.sendPhoneAction(phoneNumber));
     }
 
     @Override

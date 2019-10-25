@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +19,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import me.rzknairb.demoapp.R;
+import me.rzknairb.demoapp.utils.Utils;
 import me.rzknairb.demoapp.views.BaseFragment;
 import me.rzknairb.demoapp.views.user_profile.UserProfileActivity;
 import me.rzknairb.domain.entities.User;
@@ -97,11 +97,11 @@ public class FriendsFragment extends BaseFragment implements FriendsPresenter.Vi
 
     @Override
     public void onSwipeLeft(User user) {
-        
+        startActivity(Utils.sendEmailAction(user.getEmail(), user.getName()));
     }
 
     @Override
     public void onSwipeRight(User user) {
-
+        startActivity(Utils.sendPhoneAction(user.getPhone()));
     }
 }

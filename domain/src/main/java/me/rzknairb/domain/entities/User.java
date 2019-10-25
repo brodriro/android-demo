@@ -10,13 +10,14 @@ public class User {
     private String age;
     private String email;
     private String location;
+    private String phone;
     private Social social;
 
     public User() {
     }
 
     public User(int id, String username, String name, String lastname, String image, String occupation,
-                String age, String email, String location, Social social) {
+                String age, String email, String location, String phone, Social social) {
         this.id = id;
         this.username = username;
         this.name = name;
@@ -26,6 +27,7 @@ public class User {
         this.age = age;
         this.email = email;
         this.location = location;
+        this.phone = phone;
         this.social = social;
     }
 
@@ -39,6 +41,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public String getLastname() {

@@ -1,5 +1,7 @@
 package me.rzknairb.demoapp.utils;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.text.format.DateFormat;
 
 import java.util.Calendar;
@@ -31,5 +33,15 @@ public class Utils {
         String year         = (String) DateFormat.format("yyyy", date); // 2013
 
         return String.format("%s %s", monthString, day);
+    }
+
+    public static Intent sendEmailAction(String email, String username) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:" + email));
+        return Intent.createChooser(emailIntent, "Hello dear " + username);
+    }
+
+    public static Intent sendPhoneAction(String phoneNumber) {
+        return new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null));
     }
 }

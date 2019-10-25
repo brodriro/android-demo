@@ -10,6 +10,7 @@ public class UserResponse {
     private String lastname;
     private String image;
     private String occupation;
+    private String phone;
     private String age;
     private String email;
     private String location;
@@ -29,6 +30,10 @@ public class UserResponse {
 
     public String getLastname() {
         return lastname;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public String getImage() {
@@ -92,7 +97,7 @@ public class UserResponse {
     }
 
     public UserResponse(int id, String username, String name, String lastname, String image, String occupation,
-                        String age, String email, String location, SocialResponse socialResponse) {
+                        String age, String email, String location, SocialResponse socialResponse, String phone) {
         this.id = id;
         this.username = username;
         this.name = name;
@@ -103,6 +108,7 @@ public class UserResponse {
         this.email = email;
         this.location = location;
         this.social = socialResponse;
+        this.phone = phone;
     }
 
     public User toUser() {
@@ -116,6 +122,7 @@ public class UserResponse {
                 getAge(),
                 getEmail(),
                 getLocation(),
+                getPhone(),
                 getSocial().toSocial()
         );
     }

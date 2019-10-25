@@ -86,12 +86,12 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.ViewHold
                 Log.e(LocalTag, "onOpen");
                 if (layout.getCurrentBottomView() != null && layout.getCurrentBottomView().getId() == holder.leftWrapper.getId()){
                     listener.onSwipeLeft(user);
-                    Log.e(LocalTag, "leftWrapper");
+                    layout.close();
                 }
 
                 if (layout.getCurrentBottomView() != null && layout.getCurrentBottomView().getId() == holder.rightWrapper.getId()){
                     listener.onSwipeRight(user);
-                    Log.e(LocalTag, "rightWrapper");
+                    layout.close();
                 }
 
                 if (layout.getCurrentBottomView() != null && layout.getCurrentBottomView().getId() == holder.mainWrapper.getId()){
