@@ -5,6 +5,7 @@ dependencies {
     implementation group: 'io.reactivex.rxjava2', name: 'rxjava', version: '2.2.8'
     implementation group: 'com.google.dagger', name: 'dagger', version: '2.22.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.22.1'
+    implementation 'junit:junit:4.12'
 }
 
 sourceCompatibility = "1.8"
