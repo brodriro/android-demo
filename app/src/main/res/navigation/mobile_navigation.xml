@@ -5,11 +5,13 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
-    <fragment
+
+
+    <activity
         android:id="@+id/nav_home"
-        android:name="me.rzknairb.demoapp.views.ui.home.HomeFragment"
+        android:name="me.rzknairb.demoapp.views.home.HomeActivity"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/activity_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
