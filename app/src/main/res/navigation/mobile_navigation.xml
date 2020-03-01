@@ -5,41 +5,45 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
 
-
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="me.rzknairb.demoapp.views.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
 
     <activity
-        android:id="@+id/nav_home"
-        android:name="me.rzknairb.demoapp.views.home.HomeActivity"
+        android:id="@+id/nav_socialApp"
+        android:name="me.rzknairb.demoapp.views.social_app.home.HomeActivity"
         android:label="@string/menu_home"
         tools:layout="@layout/activity_home" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="me.rzknairb.demoapp.views.ui.gallery.GalleryFragment"
+        android:name="me.rzknairb.demoapp.views.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="me.rzknairb.demoapp.views.ui.slideshow.SlideshowFragment"
+        android:name="me.rzknairb.demoapp.views.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="me.rzknairb.demoapp.views.ui.tools.ToolsFragment"
+        android:name="me.rzknairb.demoapp.views.tools.ToolsFragment"
         android:label="@string/menu_tools"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="me.rzknairb.demoapp.views.ui.share.ShareFragment"
+        android:name="me.rzknairb.demoapp.views.share.ShareFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="me.rzknairb.demoapp.views.ui.send.SendFragment"
+        android:name="me.rzknairb.demoapp.views.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
 </navigation>

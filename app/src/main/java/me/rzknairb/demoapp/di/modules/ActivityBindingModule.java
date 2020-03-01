@@ -3,12 +3,12 @@ package me.rzknairb.demoapp.di.modules;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
-import me.rzknairb.demoapp.views.comments.CommentActivity;
-import me.rzknairb.demoapp.views.feed.FeedFragment;
-import me.rzknairb.demoapp.views.friends.FriendsFragment;
-import me.rzknairb.demoapp.views.home.HomeActivity;
-import me.rzknairb.demoapp.views.profile.ProfileFragment;
-import me.rzknairb.demoapp.views.user_profile.UserProfileActivity;
+import me.rzknairb.demoapp.views.social_app.comments.CommentActivity;
+import me.rzknairb.demoapp.views.social_app.feed.FeedFragment;
+import me.rzknairb.demoapp.views.social_app.friends.FriendsFragment;
+import me.rzknairb.demoapp.views.social_app.home.HomeActivity;
+import me.rzknairb.demoapp.views.social_app.profile.ProfileFragment;
+import me.rzknairb.demoapp.views.social_app.user_profile.UserProfileActivity;
 
 @Module(includes = AndroidSupportInjectionModule.class)
 public abstract class ActivityBindingModule {

@@ -8,5 +8,5 @@
     android:layout_height="match_parent"
 
     app:layoutManager="LinearLayoutManager"
-    tools:context=".views.feed.FeedFragment"
+    tools:context=".views.social_app.feed.FeedFragment"
     tools:listitem="@layout/fragment_feed_item" />
