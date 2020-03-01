@@ -1,16 +1,12 @@
 package me.rzknairb.demoapp.views.home;
 
 import android.os.Bundle;
-import android.text.Html;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.awt.font.TextAttribute;
-import java.text.AttributedString;
 
 import javax.inject.Inject;
 
@@ -34,7 +30,7 @@ public class HomeActivity extends BaseActivity implements HomePresenter.View, Bo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         initViews();
     }
