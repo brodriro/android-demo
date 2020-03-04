@@ -3,18 +3,18 @@ package me.rzknairb.demoapp.di.modules;
 
 import dagger.Binds;
 import dagger.Module;
-import me.rzknairb.demoapp.views.comments.CommentActivity;
-import me.rzknairb.demoapp.views.comments.CommentPresenter;
-import me.rzknairb.demoapp.views.feed.FeedFragment;
-import me.rzknairb.demoapp.views.feed.FeedPresenter;
-import me.rzknairb.demoapp.views.friends.FriendsFragment;
-import me.rzknairb.demoapp.views.friends.FriendsPresenter;
-import me.rzknairb.demoapp.views.home.HomeActivity;
-import me.rzknairb.demoapp.views.home.HomePresenter;
-import me.rzknairb.demoapp.views.profile.ProfileFragment;
-import me.rzknairb.demoapp.views.profile.ProfilePresenter;
-import me.rzknairb.demoapp.views.user_profile.UserProfileActivity;
-import me.rzknairb.demoapp.views.user_profile.UserProfilePresenter;
+import me.rzknairb.demoapp.views.social_app.comments.CommentActivity;
+import me.rzknairb.demoapp.views.social_app.comments.CommentPresenter;
+import me.rzknairb.demoapp.views.social_app.feed.FeedFragment;
+import me.rzknairb.demoapp.views.social_app.feed.FeedPresenter;
+import me.rzknairb.demoapp.views.social_app.friends.FriendsFragment;
+import me.rzknairb.demoapp.views.social_app.friends.FriendsPresenter;
+import me.rzknairb.demoapp.views.social_app.home.HomeActivity;
+import me.rzknairb.demoapp.views.social_app.home.HomePresenter;
+import me.rzknairb.demoapp.views.social_app.profile.ProfileFragment;
+import me.rzknairb.demoapp.views.social_app.profile.ProfilePresenter;
+import me.rzknairb.demoapp.views.social_app.user_profile.UserProfileActivity;
+import me.rzknairb.demoapp.views.social_app.user_profile.UserProfilePresenter;
 
 @Module
 public abstract class PresenterViewModule {

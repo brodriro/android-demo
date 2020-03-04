@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.user_profile.UserProfileActivity">
+    tools:context=".views.social_app.user_profile.UserProfileActivity">
 
     <include layout="@layout/layout_profile" />
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.friends.FriendsFragment"
+    tools:context=".views.social_app.friends.FriendsFragment"
     android:padding="4dp">
 
     <androidx.recyclerview.widget.RecyclerView

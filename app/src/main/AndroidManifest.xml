@@ -24,21 +24,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.user_profile.UserProfileActivity"
+            android:name=".views.social_app.user_profile.UserProfileActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_user_profile"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemePopup" />
         <activity
-            android:name=".views.comments.CommentActivity"
-            android:parentActivityName=".views.home.HomeActivity"
+            android:name=".views.social_app.comments.CommentActivity"
+            android:parentActivityName=".views.social_app.home.HomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".views.home.HomeActivity" />
+                android:value=".views.social_app.home.HomeActivity" />
         </activity>
-        <activity android:name=".views.home.HomeActivity" />
+        <activity android:name=".views.social_app.home.HomeActivity" />
 
 
     </application>
